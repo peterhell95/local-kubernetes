@@ -1,0 +1,21 @@
+#cloud-config
+bootcmd:
+- printf "[Resolve]\nDNS=8.8.8.8" > /etc/systemd/resolved.conf
+- [systemctl, restart, systemd-resolved]
+users:
+  - name: root
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzIQPpssKYTsoX30Uqy/Len7HlgpevsYXM/Urb5uMdtNnc0dLT0zwd7rfOOiycuYHVf+ISyEEauAJuExln/t88SEH6DTZ1PrL8Ef4jY0e4D+yn5GfUBRD9pHWeiPJJPsDi/qpVNkRDJl4RoQ2VCesOJ00uh5bRoRhxs2uwEyXdUrPFXs3m/kbilkFPxPAiAfgJZyKxzdpiRK8W9Mk9GlSNaT+5mg+8rsaAdy5V/7IWH4zPJYDTEfi9v8ptP/M/1pH8jypq6xtkSWCK6Q02vmxbHAaMpJAf3GZRItWTGBXjfdZeBNBev+P8XsckJ9DsMp6zib5M6qaC/p1r7TFsop+TudxjMfbBSI3tnrWT2bmGG/SsVqq+5bZgWFqwehOYwZ/sFIlUmi9rCVt+cOQGUx+4vmnw1cxpzHAC9zw1XtrFchPCFMI02cyPaOoMIwhVaxV7BuxL9pX28YIoKRZYtJ7gEKVPy/fbxogeVk4j+tC2zkyw12F/ih+nPTAr3FoYww0= anssbokd4@bitbucket
+
+growpart:
+    mode: auto
+    devices: ["/"]
+manage_etc_hosts: localhost
+locale: "en_US.UTF-8"
+package_update: true
+package_upgrade: true
+packages:
+    - haproxy
+runcmd:
+- systemctl restart haproxy
+- touch /tmp/signal
