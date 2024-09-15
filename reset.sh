@@ -1,3 +1,5 @@
+echo "Delete Test Cluster..."
+
 multipass delete --all
 multipass purge
 rm multipass/cloud-init-*.yaml

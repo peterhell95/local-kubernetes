@@ -84,5 +84,5 @@ runcmd:
 - systemctl daemon-reload
 - systemctl enable --now cri-docker.socket
 - 
-- echo 192.168.106.3 > /tmp/haproxy_ip
+- echo 192.168.107.8 > /tmp/haproxy_ip
 - touch /tmp/signal

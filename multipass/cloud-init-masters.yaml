@@ -83,6 +83,6 @@ runcmd:
 - sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
 - systemctl daemon-reload
 - systemctl enable --now cri-docker.socket
-- kubeadm join 192.168.106.3:6443 --token 6be1nl.v8bx6zymz0tlzt8r --discovery-token-ca-cert-hash sha256:c6245e86879b7afb66826a2a5dbb8832b9dd847d85d968dee502dd04d6ca3451 --control-plane --certificate-key 03e64a3827c78f1051de1d11ac21eb1317f12fe2e0f214513ff63a6c1652ba00 --cri-socket unix:///var/run/cri-dockerd.sock
+- kubeadm join 192.168.107.8:6443 --token 0al1jj.u9wc7q0fmpseel6c --discovery-token-ca-cert-hash sha256:633fe9e553fedc576083a1a0f3ff632ec1c4981d6f63f64418ef93c6589893cd --control-plane --certificate-key f30b1d109a40300ca817406acb0bbc044c754d90d812f084ce33dfcad7ed2390 --cri-socket unix:///var/run/cri-dockerd.sock
 - echo  > /tmp/haproxy_ip
 - touch /tmp/signal
